@@ -6,4 +6,4 @@
 ## Filament Installation
 - [Install] (https://filamentphp.com/docs/3.x/panels/installation)
 
-## [Laravel] [/docs/laravel.md] 
+## [/docs/laravel.md)
