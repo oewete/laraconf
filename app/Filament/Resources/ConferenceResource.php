@@ -24,18 +24,25 @@ class ConferenceResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                    ->label('Company Name')
+                    ->default('Name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('description')
+                Forms\Components\MarkdownEditor::make('description')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\DatePicker::make('start_date')
                     ->required(),
                 Forms\Components\DatePicker::make('end_date')
                     ->required(),
-                Forms\Components\TextInput::make('status')
-                    ->required()
-                    ->maxLength(255),
+                Forms\Components\Select::make('status')
+                    ->label('Status')
+                    ->options([
+                        '0' => 'Draft',
+                        '1' => 'Pending',
+                        '2' => 'Aprroved',
+                    ])
+                    ->native(false),
                 Forms\Components\TextInput::make('region')
                     ->required()
                     ->maxLength(255),
