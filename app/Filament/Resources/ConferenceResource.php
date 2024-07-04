@@ -25,48 +25,7 @@ class ConferenceResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->label('Company Name')
-                    ->default('Name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\MarkdownEditor::make('description')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\DatePicker::make('start_date')
-                    ->required(),
-                Forms\Components\DatePicker::make('end_date')
-                    ->required(),
-                Forms\Components\Select::make('status')
-                    ->label('Status')
-                    ->options([
-                        '0' => 'Draft',
-                        '1' => 'Pending',
-                        '2' => 'Aprroved',
-                    ])
-                    ->native(false),
-                Forms\Components\Select::make('region')
-                    ->live()
-                    ->enum(Region::class)
-                    ->options(Region::class),
-                Forms\Components\Select::make('venue_id')
-                    ->searchable()
-                    ->preload()
-                    ->createOptionForm(Venue::getForm())
-                    ->editOptionForm(Venue::getForm())
-                    ->editOptionModalHeading('Edit Venue')
-                    ->relationship('venue', 'name', modifyQueryUsing: function (Builder $query, Forms\Get $get){
-                        return $query->where('region',$get('region'));
-                    }),
-                Forms\Components\CheckboxList::make('speakers')
-                    ->relationship('speakers','name')
-                    ->options(
-                        Speaker::all()->pluck('name','id')
-                    )->columns(2)
-                    ->searchable()
-                    ->required(),
-            ]);
+            ->schema(Conference::getForm());
     }
 
     public static function table(Table $table): Table
