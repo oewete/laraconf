@@ -12,3 +12,7 @@
 ## Filament Select 
 
 ## Filament Checklist
+
+## Filament Spatie Media
+- [Install] (https://filamentphp.com/plugins/filament-spatie-media-library)
+
