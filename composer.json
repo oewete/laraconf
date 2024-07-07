@@ -62,6 +62,7 @@
         }
     },
     "config": {
+        "platform-check": false,
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true,
@@ -72,8 +73,12 @@
         "platform": {
             "php": "8.2.0"
         }
+
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
-    "platform-check": false
+    "platform": {
+        "php": "^7.3"
+    }
+
 }
